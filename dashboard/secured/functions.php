@@ -31,6 +31,10 @@ function get_opt($opt)
       return '2';
       break;
 
+    case 'Contact':
+      return 'https://lu9abm.com';
+      break;
+
     default:
       return false;
       break;
@@ -181,15 +185,14 @@ function get_peers()
 
 function get_countries()
 {
-  $countries = file(__DIR__.'/countries.csv', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  $countries = file(__DIR__ . '/countries.csv', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
   foreach ($countries as $key => $country) {
-    $aux[$key] = explode(';',$country);
+    $aux[$key] = explode(';', $country);
 
     $ret[$key]['name'] = $aux[$key][0];
     $ret[$key]['flag'] = $aux[$key][1];
-    $ret[$key]['calls'] = explode('-',$aux[$key][2]);
-
+    $ret[$key]['calls'] = explode('-', $aux[$key][2]);
   }
   return json_encode($ret);
 }
