@@ -5,14 +5,27 @@
 function get_opt($opt)
 {
   switch ($opt) {
+// functions
+    case 'ServiceUptime':
+      return time() - filectime(get_opt('ProcessIDFile'));
+      break;
+// harcoded options
     case 'ServerURL':
       return 'http://xlxapi.rlx.lu/api.php';
       break;
+
+    case 'XMLFile':
+      return '/var/log/xlxd.xml';
+      break;
+
+    case 'ProcessIDFile':
+      return '/var/log/xlxd.pid';
+      break;
+
+// find on db
+
     case 'ReflectorName':
       return 'XLX123';
-      break;
-    case 'ServiceUptime':
-      return time() - filectime(get_opt('ProcessIDFile'));
       break;
     case 'ReflectorHash':
       return 'nusASS7nbqkoclfi';
@@ -31,14 +44,6 @@ function get_opt($opt)
       return '152.67.150.221';
       break;
   
-    case 'XMLFile':
-      return '/var/log/xlxd.xml';
-      break;
-
-    case 'ProcessIDFile':
-      return '/var/log/xlxd.pid';
-      break;
-
     case 'PageTitle':
       return 'Dashboard';
       break;
@@ -55,8 +60,9 @@ function get_opt($opt)
       return 'https://lu9abm.com';
       break;
 
-    case 'Telegram-NO':
-      return 'https://t.me/XLX123_Group';
+    case 'Telegram':
+      //return 'https://t.me/XLX123_Group';
+      return false;
       break;
 
     default:
@@ -219,4 +225,14 @@ function get_countries()
     $ret[$key]['calls'] = explode('-', $aux[$key][2]);
   }
   return json_encode($ret);
+}
+
+function CreateCode ($laenge) {
+	$zeichen = "1234567890abcdefghijklmnopqrstuvwyxzABCDEFGHIJKLMNAOPQRSTUVWYXZ";
+	mt_srand( (double) microtime() * 1000000);
+	$out = "";
+	for ($i=1;$i<=$laenge;$i++){ 
+		$out .= $zeichen[mt_rand(0,(strlen($zeichen)-1))];
+	}
+	return $out;
 }

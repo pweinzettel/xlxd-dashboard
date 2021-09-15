@@ -1,6 +1,15 @@
 <?php
+// index.php?callhome=true
+// llamada para actualizar estado del reflector
+if ($_GET['callhome'] == 'true') {
+  include_once './secured/updateInfo.php';
+  die();
+}
+
+// no tengo home!
 header("Location: /users.php");
 exit();
+
 ?>
 
 <?php include_once './secured/functions.php'; ?>

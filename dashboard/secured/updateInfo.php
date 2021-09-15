@@ -1,5 +1,5 @@
 <?php
-include_once './functions.php';
+include_once './secured/functions.php';
 
 $ServerURL = get_opt('ServerURL');
 $ReflectorName = get_opt('ReflectorName');
