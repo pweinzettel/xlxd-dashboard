@@ -12,7 +12,7 @@ function get_opt($opt)
       return 'XLX123';
       break;
     case 'ServiceUptime':
-      return '3679196';
+      return time() - filectime(get_opt('ProcessIDFile'));
       break;
     case 'ReflectorHash':
       return 'nusASS7nbqkoclfi';
@@ -35,7 +35,7 @@ function get_opt($opt)
       return '/var/log/xlxd.xml';
       break;
 
-    case 'PIDFile':
+    case 'ProcessIDFile':
       return '/var/log/xlxd.pid';
       break;
 
