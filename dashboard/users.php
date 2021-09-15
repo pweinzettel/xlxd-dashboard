@@ -71,9 +71,6 @@
     </tbody>
   </table>
 -->
-  <div class="hol" style="width: 100%; text-align: center; ">
-    <p>Loading content...</p>
-  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
