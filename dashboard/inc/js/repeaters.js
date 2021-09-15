@@ -15,11 +15,11 @@ function updateTable() {
   var { nodes } = get_json('/inc/app/extdata.php?data=get_repeaters_nodes');
   var flag = '';
   var rows = '';
-  for (var i = 0; i < nodes.length; i++) {
+  for (const i in nodes) {
     var lastheard = new Date(nodes[i].LastHeardTime);
     var connect = new Date(nodes[i].ConnectTime);
-    var band = 'BAND';
     var callsign = nodes[i].Callsign.replace(/\s\s+/g, '-');
+    var band = band_suffix(callsign.split('-')[1]);
     var { cname, cflag } = get_flag(callsign);
 
     rows += `

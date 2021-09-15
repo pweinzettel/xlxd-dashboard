@@ -35,6 +35,14 @@ $active = basename($_SERVER['SCRIPT_NAME'], '.php');
       </li>
 -->
 <?php
+$telegram = get_opt('Telegram');
+if (!empty($telegram)) {
+?>
+      <li class="nav-item">
+        <a class="nav-link" target="_blank" href="<?php echo $telegram?>">Telegram</a>
+      </li>
+<?php
+}
 $contact = get_opt('Contact');
 if (!empty($contact)) {
 ?>

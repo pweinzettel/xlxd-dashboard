@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="/inc/css/main.css">
 
-  <title><?php echo get_opt('REFname') . ' - ' . get_opt('PageTitle') ?></title>
+  <title><?php echo get_opt('ReflectorName') . ' - ' . get_opt('PageTitle') ?></title>
 </head>
 
 <body>

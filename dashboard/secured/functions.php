@@ -1,22 +1,42 @@
 <?php
 
+//http://xlxapi.rlx.lu/api.php?do=GetReflectorList
+
 function get_opt($opt)
 {
   switch ($opt) {
     case 'ServerURL':
       return 'http://xlxapi.rlx.lu/api.php';
       break;
-
+    case 'ReflectorName':
+      return 'XLX123';
+      break;
+    case 'ServiceUptime':
+      return '3679196';
+      break;
+    case 'ReflectorHash':
+      return 'nusASS7nbqkoclfi';
+      break;
+    case 'DashboardURL':
+      return 'http://xlx.lu9abm.com/';
+      break;
+    case 'RefCountry':
+      return 'Argentina';
+      break;
+    case 'RefComment':
+      return 'D-Star Argentina =)';
+      break;
+    case 'OverrideIP':
+      //return false;
+      return '152.67.150.221';
+      break;
+  
     case 'XMLFile':
       return '/var/log/xlxd.xml';
       break;
 
     case 'PIDFile':
       return '/var/log/xlxd.pid';
-      break;
-
-    case 'REFname':
-      return 'XLX123';
       break;
 
     case 'PageTitle':
@@ -28,11 +48,15 @@ function get_opt($opt)
       break;
 
     case 'UpdateData':
-      return '2';
+      return '5';
       break;
 
     case 'Contact':
       return 'https://lu9abm.com';
+      break;
+
+    case 'Telegram-NO':
+      return 'https://t.me/XLX123_Group';
       break;
 
     default:
@@ -105,7 +129,7 @@ function get_users_modules()
 
   $ret = [];
   $fields = ['Callsign', 'Via node', 'On module', 'Via peer', 'LastHeardTime'];
-  $res = GetElement($xml, get_opt('REFname') . '  heard users');
+  $res = GetElement($xml, get_opt('ReflectorName') . '  heard users');
   $users = GetAllElements($res, 'STATION');
   $already = [];
   $callsign = '';
@@ -133,7 +157,7 @@ function get_repeaters_nodes()
 
   $ret = [];
   $fields = ['Callsign', 'IP', 'LinkedModule', 'Protocol', 'ConnectTime', 'LastHeardTime'];
-  $res = GetElement($xml, get_opt('REFname') . '  linked nodes');
+  $res = GetElement($xml, get_opt('ReflectorName') . '  linked nodes');
   $nodes = GetAllElements($res, 'NODE');
 
   foreach ($nodes as $key => $node) {
@@ -161,7 +185,7 @@ function get_peers()
 
   $ret = [];
   $fields = ['Callsign', 'IP', 'LinkedModule', 'Protocol', 'ConnectTime', 'LastHeardTime'];
-  $res = GetElement($xml, get_opt('REFname') . '  linked peers');
+  $res = GetElement($xml, get_opt('ReflectorName') . '  linked peers');
   $peers = GetAllElements($res, 'PEER');
 
   foreach ($peers as $key => $peer) {

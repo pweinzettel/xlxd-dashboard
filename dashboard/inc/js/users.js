@@ -17,7 +17,7 @@ function updateTable() {
     var flag = '';
     var rows = '';
     onmodule = [];
-    for (var i = 0; i < users.length; i++) {
+    for (const i in users) {
         var callsign = users[i].Callsign.split('/')[0].trim();
         var suffix = users[i].Callsign.split('/')[1].trim();
         var { cname, cflag } = get_flag(callsign);

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Version>2.4.2</Version>
+
+<XLX123  linked peers>
+<PEER>
+<Callsign>XLX333 </Callsign>
+<IP>89.33.44.100</IP>
+<LinkedModule>BFZ</LinkedModule>
+<Protocol>XLX</Protocol>
+<ConnectTime>Sunday Sun Dec 15 22:34:24 2019</ConnectTime>
+<LastHeardTime>Sunday Sun Dec 15 22:34:24 2019</LastHeardTime>
+</PEER>
+<PEER>
+<Callsign>XLX227 </Callsign>
+<IP>89.33.44.1q0</IP>
+<LinkedModule>BfZ</LinkedModule>
+<Protocol>XLX</Protocol>
+<ConnectTime>Sunday Sun Dec 15 22:34:24 2019</ConnectTime>
+<LastHeardTime>Sunday Sun Dec 15 22:34:24 2019</LastHeardTime>
+</PEER>
+</XLX123  linked peers>
+
+<XLX123  linked nodes>
+<NODE>
+        <Callsign>LU9ABM  B</Callsign>
+        <IP>201.213.113.21</IP>
+        <LinkedModule>C</LinkedModule>
+        <Protocol>DCS</Protocol>
+        <ConnectTime>Wednesday Wed Sep 15 17:25:56 2021</ConnectTime>
+        <LastHeardTime>Wednesday Wed Sep 15 17:25:56 2021</LastHeardTime>
+</NODE>
+<NODE>
+        <Callsign>LUTEST  C</Callsign>
+        <IP>201.213.113.21</IP>
+        <LinkedModule>C</LinkedModule>
+        <Protocol>XXX</Protocol>
+        <ConnectTime>Wednesday Wed Sep 15 17:25:56 2021</ConnectTime>
+        <LastHeardTime>Wednesday Wed Sep 15 17:25:56 2021</LastHeardTime>
+</NODE>
+</XLX123  linked nodes>
+
+<XLX123  heard users>
+<STATION>
+        <Callsign>LU1ABK   / 4100</Callsign>
+        <Via node>LU1ABK  D</Via node>
+        <On module>C</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Friday Fri Sep 10 21:50:33 2021</LastHeardTime>
+</STATION>
+<STATION>
+        <Callsign>LU9ABM   / 5100</Callsign>
+        <Via node>LU9ABM  B</Via node>
+        <On module>C</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Saturday Sat Sep  4 20:17:08 2021</LastHeardTime>
+</STATION>
+<STATION>
+        <Callsign>CX2TN    / 880H</Callsign>
+        <Via node>CX2TN   B</Via node>
+        <On module>C</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Friday Fri Sep  3 23:37:19 2021</LastHeardTime>
+</STATION>
+<STATION>
+        <Callsign>JK1FKO   / ID52</Callsign>
+        <Via node>JK1FKO  D</Via node>
+        <On module>H</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Friday Fri Aug 27 02:23:30 2021</LastHeardTime>
+</STATION>
+<STATION>
+        <Callsign>JK1FKO   / ID52</Callsign>
+        <Via node>JK1FKO  D</Via node>
+        <On module>A</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Friday Fri Aug 27 02:22:26 2021</LastHeardTime>
+</STATION>
+<STATION>
+        <Callsign>LU9ABM   / 5100</Callsign>
+        <Via node>LU9ABM  B</Via node>
+        <On module>A</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Saturday Sat Aug 21 20:39:50 2021</LastHeardTime>
+</STATION>
+<STATION>
+        <Callsign>LU8DQ    / ID51</Callsign>
+        <Via node>LU8DQ   B</Via node>
+        <On module>B</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Friday Fri Aug 13 03:01:25 2021</LastHeardTime>
+</STATION>
+<STATION>
+        <Callsign>LU9ABM   / 5100</Callsign>
+        <Via node>LU9ABM  B</Via node>
+        <On module>B</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Sunday Sun Aug  8 21:12:52 2021</LastHeardTime>
+</STATION>
+<STATION>
+        <Callsign>LU9ABM   / 5100</Callsign>
+        <Via node>LU9ABM  B</Via node>
+        <On module>J</On module>
+        <Via peer>XLX123  </Via peer>
+        <LastHeardTime>Thursday Thu Aug  5 02:35:08 2021</LastHeardTime>
+</STATION>
+</XLX123  heard users>

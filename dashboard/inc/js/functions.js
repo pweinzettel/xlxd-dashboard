@@ -63,3 +63,16 @@ function get_flag(call) {
 
   return 'ok';
 }
+
+function band_suffix(sufix) {
+  switch (sufix) {
+    case 'A' : return '23cm';
+    case 'B' : return '70cm';
+    case 'C' : return '2m';
+    case 'D' : return 'Dongle';
+    case 'G' : return 'Internet-Gateway';
+    
+    default:
+      return '['+sufix+']';
+  }
+}
