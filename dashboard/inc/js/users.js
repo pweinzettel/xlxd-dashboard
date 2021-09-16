@@ -12,11 +12,12 @@ $(document).ready(function () {
 });
 
 function updateTable() {
-    var { users } = get_json('/inc/app/extdata.php?data=get_users_modules');
+    var { users, modules } = get_json('/inc/app/extdata.php?data=get_users_modules');
     const cols = ['Callsign', 'LastHeardTime', 'On_module', 'Via_node', 'Via_peer'];
-    var flag = '';
+    //var flag = '';
+    //onmodule = [];
+
     var rows = '';
-    onmodule = [];
     for (const i in users) {
         var callsign = users[i].Callsign.split('/')[0].trim();
         var suffix = users[i].Callsign.split('/')[1].trim();
@@ -36,6 +37,56 @@ function updateTable() {
         </tr>`;
     }
     $('#userstbody').html(rows);
+/*
+    {
+        "linked": {
+            "C": [
+                "LU9ABM  B",
+                "LUTEST  C"
+            ],
+            "G": [
+                "LUTES2  C"
+            ]
+        },
+        "name": {
+            "C": [
+                "C</br>Nombre"
+            ],
+            "G": [
+                "G</br>Nombre"
+            ]
+        },
+        "id": [
+            "C",
+            "G"
+        ]
+    }
+*/
+    modules.id.sort();
+    var thead = '';
+    for (const id of modules.id) {
+        thead += `
+        <th class="nowrap" scope="col">${modules['name'][id]}</th>`;
+    }
+    $('#modulesthead').html(`
+    <tr>
+      ${thead}
+    </tr>`);
+
+    var tbody = '<ul class="list-group">';
+    for (const id of modules.id) {
+        tbody += `<th class="nowrap">`;
+        for (const i of modules['linked'][id]) {
+            tbody += `<li class="list-group-item"><a target="_blank" href="https://aprs.fi/${i.replace(/\s\s+/g, '-')}">${i.replace(/\s\s+/g, '-')}</a></li>`;
+        }
+        tbody += `</th>`;
+    }
+    tbody += '</ul>';
+    $('#modulestbody').html(`
+    <tr>
+      ${tbody}
+    </tr>`);
+
     var now = new Date();
     $('#lastupdate').text('Last update ' + TimeFormat(new Date(now.getTime() + now.getTimezoneOffset() * 60000)));
 }

@@ -35,7 +35,7 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item" style="overflow-x: auto;">
-            <table class="table">
+          <table class="table">
               <thead class="thead-light">
                 <tr>
                   <th class="nowrap" scope="col">Flag</th>
@@ -50,6 +50,14 @@
               <tbody id="userstbody">
               </tbody>
             </table>
+
+            <table class="table table-bordered">
+              <thead id="modulesthead" class="thead-light">
+              </thead>
+              <tbody id="modulestbody">
+              </tbody>
+            </table>
+
             <div class="hol" style="width: 100%; text-align: center; ">
               <p>Loading content...</p>
             </div>

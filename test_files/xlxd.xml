@@ -32,6 +32,22 @@
 <NODE>
         <Callsign>LUTEST  C</Callsign>
         <IP>201.213.113.21</IP>
+        <LinkedModule>A</LinkedModule>
+        <Protocol>XXX</Protocol>
+        <ConnectTime>Wednesday Wed Sep 15 17:25:56 2021</ConnectTime>
+        <LastHeardTime>Wednesday Wed Sep 15 17:25:56 2021</LastHeardTime>
+</NODE>
+<NODE>
+        <Callsign>LUTES2  C</Callsign>
+        <IP>201.213.113.21</IP>
+        <LinkedModule>G</LinkedModule>
+        <Protocol>XXX</Protocol>
+        <ConnectTime>Wednesday Wed Sep 15 17:25:56 2021</ConnectTime>
+        <LastHeardTime>Wednesday Wed Sep 15 17:25:56 2021</LastHeardTime>
+</NODE>
+<NODE>
+        <Callsign>LUTES3  C</Callsign>
+        <IP>201.213.113.21</IP>
         <LinkedModule>C</LinkedModule>
         <Protocol>XXX</Protocol>
         <ConnectTime>Wednesday Wed Sep 15 17:25:56 2021</ConnectTime>

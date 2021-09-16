@@ -5,11 +5,12 @@
 function get_opt($opt)
 {
   switch ($opt) {
-// functions
+  // functions
     case 'ServiceUptime':
       return time() - filectime(get_opt('ProcessIDFile'));
       break;
-// harcoded options
+
+  // harcoded options
     case 'ServerURL':
       return 'http://xlxapi.rlx.lu/api.php';
       break;
@@ -23,7 +24,6 @@ function get_opt($opt)
       break;
 
 // find on db
-
     case 'ReflectorName':
       return 'XLX123';
       break;
@@ -37,7 +37,7 @@ function get_opt($opt)
       return 'Argentina';
       break;
     case 'RefComment':
-      return 'D-Star Argentina =)';
+      return 'D-Star Argentina';
       break;
     case 'OverrideIP':
       //return false;
@@ -154,6 +154,31 @@ function get_users_modules()
       $ret['users'][$key][$fieldt] = GetElement($user, $field);
     }
   }
+
+  $fields = ['Callsign', 'LinkedModule'];
+
+  $res = GetElement($xml, get_opt('ReflectorName') . '  linked nodes');
+  $modules = GetAllElements($res, 'NODE');
+
+  $ret['modules']['linked'] = [];
+  $ret['modules']['name'] = [];
+  $ret['modules']['id'] = [];
+  foreach ($modules as $key => $module) {
+    if (empty($module)) continue;
+    $name = GetElement($module, 'Callsign');
+    $linked = GetElement($module, 'LinkedModule');
+    $lnkname = $linked; // . '</br>Nombre';
+
+    if ( ! isset($ret['modules']['linked'][$linked]) ) {
+      $ret['modules']['linked'][$linked] = [];
+      $ret['modules']['name'][$linked] = [];
+      array_push($ret['modules']['name'][$linked],$lnkname);
+      array_push($ret['modules']['id'],$linked);
+    }
+
+    array_push($ret['modules']['linked'][$linked],$name);
+  }
+
   return json_encode($ret);
 }
 
