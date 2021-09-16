@@ -29,7 +29,7 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item" style="overflow-x: auto;">
-            <table class="table">
+            <table class="table table-striped">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Reflector</th>

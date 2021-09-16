@@ -35,7 +35,7 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item" style="overflow-x: auto;">
-          <table class="table">
+          <table class="table table-striped">
               <thead class="thead-light">
                 <tr>
                   <th class="nowrap" scope="col">Flag</th>
@@ -65,20 +65,8 @@
         </ul>
       </div>
 
-
     </div>
   </div>
-
-  <!--
-  <table class="table">
-    <thead class="thead-light" id="modthead">
-
-    </thead>
-    <tbody id="modtbody">
-
-    </tbody>
-  </table>
--->
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
