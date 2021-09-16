@@ -65,6 +65,14 @@ function get_opt($opt)
       return false;
       break;
 
+    case 'TGtoken':
+      return '1221226800:AAFC88OHW40hA_iZVuoHmVKMV0SiP1WmV8k';
+      break;
+
+    case 'TGchat':
+      return '1221226800:AAFC88OHW40hA_iZVuoHmVKMV0SiP1WmV8k';
+      break;
+
     default:
       return false;
       break;
