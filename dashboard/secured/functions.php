@@ -23,6 +23,10 @@ function get_opt($opt)
       return '/var/log/xlxd.pid';
       break;
 
+    case 'users_modules_json':
+      return '/var/log/users_modules.json';
+      break;
+
 // find on db
     case 'ReflectorName':
       return 'XLX123';
@@ -71,6 +75,10 @@ function get_opt($opt)
 
     case 'TGchat':
       return '1221226800:AAFC88OHW40hA_iZVuoHmVKMV0SiP1WmV8k';
+      break;
+
+    case 'NotifDelay':
+      return '30';
       break;
 
     default:

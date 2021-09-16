@@ -4,9 +4,10 @@
 # deberia ejecutarse un php para poder leer las opciones y tomar los parametros como lo hace la web
 
 XML="/var/log/xlxd.xml"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 function run_proc() {
-    echo cambio
+    php ${DIR}/inotifywait.php
 }
 
 function file_write() {
