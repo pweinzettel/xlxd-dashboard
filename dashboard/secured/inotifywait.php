@@ -49,11 +49,12 @@ foreach ($now['users'] as $user) {
         if ($user['Callsign'] == $puser['Callsign'] ) {
             $call = str_replace(' ', '', $user['Callsign']);
             $module = str_replace(' ', '', $user['On_module']);
+            $module_prev = str_replace(' ', '', $puser['On_module']);
             $node = preg_replace('!\s+!', '-', $user['Via_node']);
             $peer = str_replace(' ', '', $user['Via_peer']);
             $curr = strtotime($user['LastHeardTime']);
             $last = strtotime($puser['LastHeardTime']);
-            if ($curr > $last+$NotifDelay) {
+            if ($curr > $last+$NotifDelay || $module_prev != $module) {
                 $msg = "<b>".$call."</b> online on module <b>".$module."</b> via <b>".$node."</b> > <b>".$peer."</b>";
                 $res = tg_send($TGchat, $msg);
             }
