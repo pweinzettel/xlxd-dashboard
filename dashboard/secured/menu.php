@@ -43,6 +43,14 @@ if (!empty($TGFeed_link)) {
       </li>
 <?php
 }
+$TGGroup_link = get_opt('TGGroup_link');
+if (!empty($TGGroup_link)) {
+?>
+      <li class="nav-item">
+        <a class="nav-link" target="_blank" href="<?php echo $TGGroup_link?>">Telegram Feed</a>
+      </li>
+<?php
+}
 $contact = get_opt('Contact');
 if (!empty($contact)) {
 ?>

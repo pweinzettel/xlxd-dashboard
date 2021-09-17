@@ -80,6 +80,10 @@ function get_opt($opt)
       return 'https://t.me/XLX123_Feed';
       break;
 
+    case 'TGGroup_link':
+      return 'https://t.me/XLX123_Group';
+      break;
+
     case 'TGtoken':
       return '1221226800:AAFC88OHW40hA_iZVuoHmVKMV0SiP1WmV8k';
       break;
