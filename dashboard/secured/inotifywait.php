@@ -32,7 +32,6 @@ foreach ($now['users'] as $user) {
         }
     }
 }
-echo PHP_EOL.PHP_EOL.PHP_EOL;
 // fin comparacion
 
 // guardar now como last
