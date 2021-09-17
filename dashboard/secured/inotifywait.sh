@@ -5,6 +5,7 @@
 
 XML="/var/log/xlxd.xml"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd ${DIR}/..
 
 function run_proc() {
     php ${DIR}/inotifywait.php

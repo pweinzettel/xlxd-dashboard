@@ -27,6 +27,18 @@ function get_opt($opt)
       return '/var/log/users_modules.json';
       break;
 
+    case 'repeaters_nodes_json':
+      return '/var/log/repeaters_nodes.json';
+      break;
+
+    case 'peers_json':
+      return '/var/log/peers.json';
+      break;
+
+    case 'reflector_list_json':
+      return '/var/log/reflector_list.json';
+      break;
+
 // find on db
     case 'ReflectorName':
       return 'XLX123';
@@ -74,11 +86,11 @@ function get_opt($opt)
       break;
 
     case 'TGchat':
-      return '1221226800:AAFC88OHW40hA_iZVuoHmVKMV0SiP1WmV8k';
+      return '@XLX123_feed';
       break;
 
-    case 'NotifDelay':
-      return '30';
+    case 'NotifDelay': //seconds
+      return '1800';
       break;
 
     default:
