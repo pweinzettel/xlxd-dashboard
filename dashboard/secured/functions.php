@@ -77,8 +77,7 @@ function get_opt($opt)
       break;
 
     case 'Telegram':
-      //return 'https://t.me/XLX123_Group';
-      return false;
+      return 'https://t.me/XLX123_Feed';
       break;
 
     case 'TGtoken':
@@ -90,7 +89,7 @@ function get_opt($opt)
       break;
 
     case 'NotifDelay': //seconds
-      return '30';
+      return '1800';
       break;
 
     default:
