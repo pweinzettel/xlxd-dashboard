@@ -93,7 +93,7 @@ function get_opt($opt)
       break;
 
     case 'NotifDelay': //seconds
-      return '1800';
+      return '600'; //10 min?
       break;
 
     default:

@@ -1,7 +1,8 @@
 <?php
 // index.php?callhome=true
 // llamada para actualizar estado del reflector
-if ($_GET['callhome'] == 'true') {
+$callhome = isset($_GET['callhome']) ? $_GET['callhome'] : false;
+if ($callhome == 'true') {
   include_once './secured/updateInfo.php';
   die();
 }
