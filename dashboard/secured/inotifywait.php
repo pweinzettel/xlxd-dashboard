@@ -17,7 +17,10 @@ $prev = json_decode(file_get_contents($json_file), true);
 
 // busco modulos online
 foreach ($now['modules']['linked'] as $module => $nodes) {
-    $nodes_online = array_diff($now['modules']['linked'][$module], $prev['modules']['linked'][$module]);
+    $nodes_now = isset($now['modules']['linked'][$module]) ? $now['modules']['linked'][$module] : [];
+    $nodes_prev = isset($prev['modules']['linked'][$module]) ? $prev['modules']['linked'][$module] : [];
+
+    $nodes_online = array_diff($nodes_now, $nodes_prev);
     if (sizeof($nodes_online) < 1) continue;
     foreach ($nodes_online as $node_online) {
         $node = preg_replace('!\s+!', '-', $node_online);
@@ -28,11 +31,14 @@ foreach ($now['modules']['linked'] as $module => $nodes) {
 
 // busco modulos offline
 foreach ($prev['modules']['linked'] as $module => $nodes) {
-    $nodes_offline = array_diff($prev['modules']['linked'][$module], $now['modules']['linked'][$module]);
+    $nodes_now = isset($now['modules']['linked'][$module]) ? $now['modules']['linked'][$module] : [];
+    $nodes_prev = isset($prev['modules']['linked'][$module]) ? $prev['modules']['linked'][$module] : [];
+
+    $nodes_offline = array_diff($nodes_prev, $nodes_now);
     if (sizeof($nodes_offline) < 1) continue;
     foreach ($nodes_offline as $node_offline) {
         $node = preg_replace('!\s+!', '-', $node_offline);
-        $msg = "Node <b>".$node."</b> offline";
+        $msg = "Node <b>".$node."</b> offline from module <b>".$module."</b>";
         $res = tg_send($TGchat, $msg);
     }
 }
