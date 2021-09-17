@@ -76,7 +76,7 @@ function get_opt($opt)
       return 'https://lu9abm.com';
       break;
 
-    case 'Telegram':
+    case 'TGFeed_link':
       return 'https://t.me/XLX123_Feed';
       break;
 
@@ -84,8 +84,8 @@ function get_opt($opt)
       return '1221226800:AAFC88OHW40hA_iZVuoHmVKMV0SiP1WmV8k';
       break;
 
-    case 'TGchat':
-      return '@XLX123_feed';
+    case 'TGFeed':
+      return '@XLX123_Feed';
       break;
 
     case 'NotifDelay': //seconds

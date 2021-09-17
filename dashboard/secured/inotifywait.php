@@ -5,7 +5,7 @@ include_once './secured/telegram.php';
 $json_file = get_opt('users_modules_json');
 $now = json_decode(get_users_modules(), true);
 $NotifDelay = (int)get_opt('NotifDelay');
-$TGchat = get_opt('TGchat');
+$TGFeed = get_opt('TGFeed');
 
 if (!file_exists($json_file)) {
     file_put_contents($json_file, json_encode($now));
@@ -25,7 +25,7 @@ foreach ($prev['modules']['linked'] as $module => $nodes) {
     foreach ($nodes_offline as $node_offline) {
         $node = preg_replace('!\s+!', '-', $node_offline);
         $msg = "Node <b>".$node."</b> offline from module <b>".$module."</b>";
-        $res = tg_send($TGchat, $msg);
+        $res = tg_send($TGFeed, $msg);
     }
 }
 
@@ -39,7 +39,7 @@ foreach ($now['modules']['linked'] as $module => $nodes) {
     foreach ($nodes_online as $node_online) {
         $node = preg_replace('!\s+!', '-', $node_online);
         $msg = "Node <b>".$node."</b> online on module <b>".$module."</b>";
-        $res = tg_send($TGchat, $msg);
+        $res = tg_send($TGFeed, $msg);
     }
 }
 
@@ -56,7 +56,7 @@ foreach ($now['users'] as $user) {
             $last = strtotime($puser['LastHeardTime']);
             if ($curr > $last+$NotifDelay || $module_prev != $module) {
                 $msg = "<b>".$call."</b> online on module <b>".$module."</b> via <b>".$node."</b> > <b>".$peer."</b>";
-                $res = tg_send($TGchat, $msg);
+                $res = tg_send($TGFeed, $msg);
             }
         }
     }

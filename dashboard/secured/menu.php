@@ -35,11 +35,11 @@ $active = basename($_SERVER['SCRIPT_NAME'], '.php');
       </li>
 -->
 <?php
-$telegram = get_opt('Telegram');
-if (!empty($telegram)) {
+$TGFeed_link = get_opt('TGFeed_link');
+if (!empty($TGFeed_link)) {
 ?>
       <li class="nav-item">
-        <a class="nav-link" target="_blank" href="<?php echo $telegram?>">Telegram</a>
+        <a class="nav-link" target="_blank" href="<?php echo $TGFeed_link?>">Telegram Feed</a>
       </li>
 <?php
 }
