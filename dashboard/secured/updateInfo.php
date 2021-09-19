@@ -10,8 +10,6 @@ $RefCountry = urlencode(get_opt('RefCountry'));
 $RefComment = urlencode(get_opt('RefComment'));
 $OverrideIP = get_opt('OverrideIP');
 
-echo $ServerURL."?ReflectorName=".$ReflectorName."&ReflectorUptime=".$ServiceUptime."&ReflectorHash=".$ReflectorHash."&DashboardURL=".$DashboardURL."&Country=".$RefCountry."&Comment=".$RefComment."&OverrideIP=".$OverrideIP;
-
 $file_handle = @fopen($ServerURL."?ReflectorName=".$ReflectorName."&ReflectorUptime=".$ServiceUptime."&ReflectorHash=".$ReflectorHash."&DashboardURL=".$DashboardURL."&Country=".$RefCountry."&Comment=".$RefComment."&OverrideIP=".$OverrideIP, "r");
 
 while (!feof($file_handle)) {
@@ -19,6 +17,6 @@ while (!feof($file_handle)) {
 }
 fclose($file_handle);
 
-//var_dump($xml); // dont dump response on production!! reveals hash!
+var_dump($xml); 
 
 ?>
