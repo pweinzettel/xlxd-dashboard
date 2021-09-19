@@ -19,6 +19,6 @@ while (!feof($file_handle)) {
 }
 fclose($file_handle);
 
-var_dump($xml);
+//var_dump($xml); // dont dump response on production!! reveals hash!
 
 ?>
