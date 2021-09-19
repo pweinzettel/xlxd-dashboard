@@ -53,7 +53,7 @@ function get_opt($opt)
       return 'Argentina';
       break;
     case 'RefComment':
-      return 'D-Star Argentina';
+      return 'D-Star Argentina -> https://t.me/XLX123_Feed';
       break;
     case 'OverrideIP':
       //return false;
