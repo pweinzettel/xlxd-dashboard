@@ -18,9 +18,15 @@ function updateTable() {
     //onmodule = [];
 
     var rows = '';
+    //console.log(users);
     for (const i in users) {
         var callsign = users[i].Callsign.split('/')[0].trim();
-        var suffix = users[i].Callsign.split('/')[1].trim();
+        var suffix = users[i].Callsign.split('/')[1];
+	if (suffix) {
+	  suffix = suffix.trim();
+	} else {
+	  suffix = 'N/A'
+	}
         var { cname, cflag } = get_flag(callsign);
         var lastheard = new Date(users[i].LastHeardTime);
         var module = users[i].On_module;
