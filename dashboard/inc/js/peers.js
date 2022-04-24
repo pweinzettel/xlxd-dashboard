@@ -12,22 +12,22 @@ $(document).ready(function () {
 });
 
 function updateTable() {
-  var { peers } = get_json('/inc/app/extdata.php?data=get_peers');
+  var peers = get_json('/inc/app/extdata.php?data=get_peers');
 
   var rows = '';
   for (const i in peers) {
-    var lastheard = new Date(peers[i].LastHeardTime);
-    var connect = new Date(peers[i].ConnectTime);
-    var callsign = peers[i].Callsign.replace(/\s\s+/g, '-');
+    var lastheard = Epoch2DT(peers[i].last_heard);
+    var connect_time = Epoch2DT(peers[i].connect_time);
+    var callsign = peers[i].callsign.replace(/\s\s+/g, '-');
 
     rows += `
     <tr class="peers">
       <th class="nowrap">${callsign}</a></th>
-      <td class="nowrap">${DateTimeFormat(lastheard)}</td>
-      <td class="nowrap">${timeSince(connect)}</td>
-      <td class="nowrap">${peers[i].Protocol}</td>
-      <td class="nowrap">${peers[i].LinkedModule}</td>
-      <td class="nowrap">${peers[i].IP}</td>
+      <td class="nowrap">${lastheard}</td>
+      <td class="nowrap">${connect_time}</td>
+      <td class="nowrap">${peers[i].protocol}</td>
+      <td class="nowrap">${peers[i].linked_module}</td>
+      <td class="nowrap">${peers[i].ip}</td>
     </tr>`;
   }
   $('#peerstbody').html(rows);

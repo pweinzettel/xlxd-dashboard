@@ -12,13 +12,14 @@ $(document).ready(function () {
 });
 
 function updateTable() {
-  var { nodes } = get_json('/inc/app/extdata.php?data=get_repeaters_nodes');
+  var nodes = get_json('/inc/app/extdata.php?data=get_repeaters_nodes');
   var flag = '';
   var rows = '';
   for (const i in nodes) {
-    var lastheard = new Date(nodes[i].LastHeardTime);
-    var connect = new Date(nodes[i].ConnectTime);
-    var callsign = nodes[i].Callsign.replace(/\s\s+/g, '-');
+    var last_heard = Epoch2DT(nodes[i].last_heard);
+    var connect_time = Epoch2DT(nodes[i].connect_time);
+
+    var callsign = nodes[i].callsign.replace(/\s\s+/g, '-');
     var band = band_suffix(callsign.split('-')[1]);
     var { cname, cflag } = get_flag(callsign);
 
@@ -27,11 +28,11 @@ function updateTable() {
       <td class="nowrap"><img src="/inc/img/flags/${cflag.toLowerCase()}.png" alt="${cname}" title="${cname}"></td>
       <th class="nowrap"><a target="_blank" href="https://aprs.fi/${callsign}">${callsign}</a></th>
       <td class="nowrap">${band}</td>
-      <td class="nowrap">${DateTimeFormat(lastheard)}</td>
-      <td class="nowrap">${timeSince(connect)}</td>
-      <td class="nowrap">${nodes[i].Protocol}</td>
-      <td class="nowrap">${nodes[i].LinkedModule}</td>
-      <td class="nowrap">${nodes[i].IP}</td>
+      <td class="nowrap">${last_heard}</td>
+      <td class="nowrap">${connect_time}</td>
+      <td class="nowrap">${nodes[i].protocol}</td>
+      <td class="nowrap">${nodes[i].linked_module}</td>
+      <td class="nowrap">${nodes[i].ip}</td>
     </tr>`;
   }
   $('#nodestbody').html(rows);

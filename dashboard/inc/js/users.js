@@ -12,25 +12,25 @@ $(document).ready(function () {
 });
 
 function updateTable() {
-    var { users, modules } = get_json('/inc/app/extdata.php?data=get_users_modules');
-    const cols = ['Callsign', 'LastHeardTime', 'On_module', 'Via_node', 'Via_peer'];
+    var users = get_json('/inc/app/extdata.php?data=get_users_modules');
+//    const cols = ['callsign', 'last_heard', 'on_module', 'via_node', 'via_peer'];
     //var flag = '';
     //onmodule = [];
 
     var rows = '';
     //console.log(users);
     for (const i in users) {
-        var callsign = users[i].Callsign.split('/')[0].trim();
-        var suffix = users[i].Callsign.split('/')[1];
+        var callsign = users[i].callsign.split('/')[0].trim();
+        var suffix = users[i].callsign.split('/')[1];
 	if (suffix) {
 	  suffix = suffix.trim();
 	} else {
 	  suffix = 'N/A'
 	}
         var { cname, cflag } = get_flag(callsign);
-        var lastheard = new Date(users[i].LastHeardTime);
-        var module = users[i].On_module;
-        var via_node = users[i].Via_node.replace(/\s\s+/g, ' ');
+        var lastheard = Epoch2DT(users[i].last_heard);
+        var module = users[i].on_module;
+        var via_node = users[i].via_node.replace(/\s\s+/g, ' ');
         rows += `
         <tr class="users">
           <td class="nowrap"><img src="/inc/img/flags/${cflag.toLowerCase()}.png" alt="${cname}" title="${cname}"></td>
@@ -38,7 +38,7 @@ function updateTable() {
           <td class="nowrap">${suffix}</td>
           <td class="nowrap"><a target="_blank" href="https://aprs.fi/${callsign}"><i class="fas fa-satellite"></i></a></td>
           <td class="nowrap">${via_node}</td>
-          <td class="nowrap">${DateTimeFormat(lastheard)}</td>
+          <td class="nowrap">${lastheard}</td>
           <td class="nowrap">${module}</td>
         </tr>`;
     }
@@ -68,6 +68,7 @@ function updateTable() {
         ]
     }
 */
+/*
     modules.id.sort();
     var thead = '';
     for (const id of modules.id) {
@@ -92,7 +93,7 @@ function updateTable() {
     <tr>
       ${tbody}
     </tr>`);
-
+*/
     var now = new Date();
     $('#lastupdate').text('Last update ' + TimeFormat(new Date(now.getTime() + now.getTimezoneOffset() * 60000)));
 }

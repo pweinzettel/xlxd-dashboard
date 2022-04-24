@@ -22,6 +22,11 @@ function get_json($url) {
 function DateTimeFormat(date) {
   return date.toLocaleDateString('en-GB') + ' ' + date.toLocaleTimeString('en-GB');
 }
+function Epoch2DT(sec) {
+  const ms = sec*1000;
+  date = new Date(ms);
+  return date.toLocaleDateString('en-GB') + ' ' + date.toLocaleTimeString('en-GB');
+}
 function DateFormat(date) {
   return date.toLocaleDateString('en-GB');
 }
@@ -71,7 +76,7 @@ function band_suffix(sufix) {
     case 'C' : return '2m';
     case 'D' : return 'Dongle';
     case 'G' : return 'Internet-Gateway';
-    
+
     default:
       return '['+sufix+']';
   }

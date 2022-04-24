@@ -12,6 +12,8 @@ $OverrideIP = get_opt('OverrideIP');
 
 $file_handle = @fopen($ServerURL."?ReflectorName=".$ReflectorName."&ReflectorUptime=".$ServiceUptime."&ReflectorHash=".$ReflectorHash."&DashboardURL=".$DashboardURL."&Country=".$RefCountry."&Comment=".$RefComment."&OverrideIP=".$OverrideIP, "r");
 
+$xml = '';
+
 while (!feof($file_handle)) {
    $xml .= fgets($file_handle);
 }

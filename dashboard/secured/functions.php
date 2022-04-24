@@ -15,8 +15,8 @@ function get_opt($opt)
       return 'http://xlxapi.rlx.lu/api.php';
       break;
 
-    case 'XMLFile':
-      return '/var/log/xlxd.xml';
+    case 'JSONFile':
+      return '/var/log/xlxd.json';
       break;
 
     case 'ProcessIDFile':
@@ -162,8 +162,10 @@ function get_reflector_list()
 
 function get_users_modules()
 {
-  $xml = file_get_contents(get_opt('XMLFile'));
-
+  $json = json_decode(file_get_contents(get_opt('JSONFile')));
+  $ret = $json->heard_users;
+  // TODO: send Modules
+  /*
   $ret = [];
   $fields = ['Callsign', 'Via node', 'On module', 'Via peer', 'LastHeardTime'];
   $res = GetElement($xml, get_opt('ReflectorName') . '  heard users');
@@ -209,14 +211,15 @@ function get_users_modules()
 
     array_push($ret['modules']['linked'][$linked],$name);
   }
-
+*/
   return json_encode($ret);
 }
 
 function get_repeaters_nodes()
 {
-  $xml = file_get_contents(get_opt('XMLFile'));
-
+  $json = json_decode(file_get_contents(get_opt('JSONFile')));
+  $ret = $json->nodes;
+/*
   $ret = [];
   $fields = ['Callsign', 'IP', 'LinkedModule', 'Protocol', 'ConnectTime', 'LastHeardTime'];
   $res = GetElement($xml, get_opt('ReflectorName') . '  linked nodes');
@@ -238,13 +241,16 @@ function get_repeaters_nodes()
       $ret['nodes'][$key][$fieldt] = $val;
     }
   }
+*/
   return json_encode($ret);
 }
 
 function get_peers()
 {
-  $xml = file_get_contents(get_opt('XMLFile'));
-
+  $json = json_decode(file_get_contents(get_opt('JSONFile')));
+  $ret = $json->peers;
+  // TODO: Mask IP
+  /*
   $ret = [];
   $fields = ['Callsign', 'IP', 'LinkedModule', 'Protocol', 'ConnectTime', 'LastHeardTime'];
   $res = GetElement($xml, get_opt('ReflectorName') . '  linked peers');
@@ -266,6 +272,7 @@ function get_peers()
       $ret['peers'][$key][$fieldt] = $val;
     }
   }
+*/
   return json_encode($ret);
 }
 
