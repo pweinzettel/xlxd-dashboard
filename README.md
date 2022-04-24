@@ -1,7 +1,8 @@
 # xlxd-dashboard
 xlxd improved dashboard
 
-xlxd server that im working on: [pweinzettel/xlxd-dashboard](https://github.com/pweinzettel/xlxd-dashboard)
+xlxd server that im working on: [pweinzettel/xlxd](https://github.com/pweinzettel/xlxd)
+
 This version creates a json log file instead malformed XML
 
 # xlxd
