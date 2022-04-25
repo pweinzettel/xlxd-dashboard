@@ -69,7 +69,7 @@ function get_opt($opt)
       break;
 
     case 'ReflectorName':
-      $refname = json_decode(file_get_contents(get_opt('JSONFile')))->refname;
+      $refname = trim(json_decode(file_get_contents(get_opt('JSONFile')))->refname);
       if (isset($refname)) return $refname;
       return 'XLX Ref';
       break;

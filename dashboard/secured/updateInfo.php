@@ -23,7 +23,8 @@ while (!feof($file_handle)) {
    $xml .= fgets($file_handle);
 }
 fclose($file_handle);
+$xml .= PHP_EOL;
 
-var_dump($xml); 
+print_r($xml);
 
 ?>
