@@ -1,0 +1,101 @@
+{
+  "version": "2.5.2",
+  "refname": "XLX123  ",
+  "peers": [
+    {
+      "callsign": "LU9ABM  B",
+      "ip": "1.2.3.4",
+      "linked_module": "C",
+      "protocol": "DCS",
+      "connect_time": "1650820729",
+      "last_heard": "1650820740"
+    },
+    {
+      "callsign": "LU9ABM  B",
+      "ip": "1.2.3.4",
+      "linked_module": "C",
+      "protocol": "DCS",
+      "connect_time": "1650820729",
+      "last_heard": "1650820740"
+    }
+  ],
+  "nodes": [
+    {
+      "callsign": "LU9ABM  B",
+      "ip": "1.2.3.4",
+      "linked_module": "C",
+      "protocol": "DCS",
+      "connect_time": "1650820729",
+      "last_heard": "1650820740"
+    },
+    {
+      "callsign": "LU9ABM  B",
+      "ip": "1.2.3.4",
+      "linked_module": "C",
+      "protocol": "DCS",
+      "connect_time": "1650820729",
+      "last_heard": "1650820740"
+    },
+    {
+      "callsign": "LU9ABM  B",
+      "ip": "1.2.3.4",
+      "linked_module": "C",
+      "protocol": "DCS",
+      "connect_time": "1650820729",
+      "last_heard": "1650820740"
+    },
+    {
+      "callsign": "LU9ABM  B",
+      "ip": "1.2.3.4",
+      "linked_module": "C",
+      "protocol": "DCS",
+      "connect_time": "1650820729",
+      "last_heard": "1650820740"
+    },
+    {
+      "callsign": "LU9ABM  B",
+      "ip": "1.2.3.4",
+      "linked_module": "C",
+      "protocol": "DCS",
+      "connect_time": "1650820729",
+      "last_heard": "1650820740"
+    }
+  ],
+  "heard_users": [
+    {
+      "callsign": "LU9ABM   / 5100",
+      "via_node": "LU9ABM  B",
+      "on_module": "C",
+      "via_peer": "XLX123  ",
+      "last_heard": "1650820741"
+    },
+    {
+      "callsign": "LU9ABM   / 5100",
+      "via_node": "LU9ABM  B",
+      "on_module": "C",
+      "via_peer": "XLX123  ",
+      "last_heard": "1650820741"
+    },
+    {
+      "callsign": "LU9ABM   / 5100",
+      "via_node": "LU9ABM  B",
+      "on_module": "C",
+      "via_peer": "XLX123  ",
+      "last_heard": "1650820741"
+    },
+    {
+      "callsign": "LU9ABM   / 5100",
+      "via_node": "LU9ABM  B",
+      "on_module": "C",
+      "via_peer": "XLX123  ",
+      "last_heard": "1650820741"
+    },
+    {
+      "callsign": "LU9ABM   / 5100",
+      "via_node": "LU9ABM  B",
+      "on_module": "C",
+      "via_peer": "XLX123  ",
+      "last_heard": "1650820741"
+    }
+  ]
+}

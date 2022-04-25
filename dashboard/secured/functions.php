@@ -5,61 +5,28 @@
 function get_opt($opt)
 {
   switch ($opt) {
-  // functions
-    case 'ServiceUptime':
-      return time() - filectime(get_opt('ProcessIDFile'));
-      break;
-
-  // harcoded options
-    case 'ServerURL':
-      return 'http://xlxapi.rlx.lu/api.php';
-      break;
-
-    case 'JSONFile':
-      return '/var/log/xlxd.json';
-      break;
-
-    case 'ProcessIDFile':
-      return '/var/log/xlxd.pid';
-      break;
-
-    case 'users_modules_json':
-      return '/var/log/users_modules.json';
-      break;
-
-    case 'repeaters_nodes_json':
-      return '/var/log/repeaters_nodes.json';
-      break;
-
-    case 'peers_json':
-      return '/var/log/peers.json';
-      break;
-
-    case 'reflector_list_json':
-      return '/var/log/reflector_list.json';
-      break;
-
-// find on db
-    case 'ReflectorName':
-      return 'XLX123';
-      break;
+// ??
     case 'ReflectorHash':
       return 'nusASS7nbqkoclfi';
       break;
+
     case 'DashboardURL':
       return 'http://xlx.lu9abm.com/';
       break;
+
     case 'RefCountry':
       return 'Argentina';
       break;
+
     case 'RefComment':
       return 'D-Star Argentina -> https://t.me/XLX123_Feed';
       break;
+
     case 'OverrideIP':
-      //return false;
-      return '152.67.150.221';
+      return false;
+      //return '152.67.150.221';
       break;
-  
+
     case 'PageTitle':
       return 'Dashboard';
       break;
@@ -96,23 +63,37 @@ function get_opt($opt)
       return '600'; //10 min?
       break;
 
+  // functions
+    case 'ServiceUptime':
+      return time() - filectime(get_opt('ProcessIDFile'));
+      break;
+
+    case 'ReflectorName':
+      $refname = json_decode(file_get_contents(get_opt('JSONFile')))->refname;
+      if (isset($refname)) return $refname;
+      return 'XLX Ref';
+      break;
+
+  // harcoded options
+    case 'ServerURL':
+      return 'http://xlxapi.rlx.lu/api.php';
+      break;
+
+    case 'JSONFile':
+      return '/var/log/xlxd.json';
+      break;
+
+    case 'ProcessIDFile':
+      return '/var/log/xlxd.pid';
+      break;
+
     default:
       return false;
       break;
   }
 }
 
-function xml2json($xml)
-{
-  return json_encode(simplexml_load_string($xml));
-}
-
-function xml2array($xml)
-{
-  return json_decode(xml2json($xml), TRUE);
-}
-
-function GetElement($InputString, $ElementName)
+function GetElement($InputString, $ElementName) // todavia lo uso para reflector list
 {
   if (strpos($InputString, "<" . $ElementName . ">") === false) return false;
   if (strpos($InputString, "</" . $ElementName . ">") === false) return false;
@@ -120,7 +101,7 @@ function GetElement($InputString, $ElementName)
   return $Element;
 }
 
-function GetAllElements($InputString, $ElementName)
+function GetAllElements($InputString, $ElementName) // todavia lo uso para reflector list
 {
   $Elements = array();
   while (strpos($InputString, $ElementName) !== false) {
@@ -164,54 +145,7 @@ function get_users_modules()
 {
   $json = json_decode(file_get_contents(get_opt('JSONFile')));
   $ret = $json->heard_users;
-  // TODO: send Modules
-  /*
-  $ret = [];
-  $fields = ['Callsign', 'Via node', 'On module', 'Via peer', 'LastHeardTime'];
-  $res = GetElement($xml, get_opt('ReflectorName') . '  heard users');
-  $users = GetAllElements($res, 'STATION');
-  $already = [];
-  $callsign = '';
 
-  foreach ($users as $key => $user) {
-    if (empty($user)) continue;
-    $callsign = GetElement($user, 'Callsign');
-    if (in_array($callsign, $already)) {
-      continue;
-    } else {
-      array_push($already, $callsign);
-    }
-    $ret['users'][$key] = [];
-    foreach ($fields as $field) {
-      $fieldt = str_replace(' ', '_', $field);
-      $ret['users'][$key][$fieldt] = GetElement($user, $field);
-    }
-  }
-
-  $fields = ['Callsign', 'LinkedModule'];
-
-  $res = GetElement($xml, get_opt('ReflectorName') . '  linked nodes');
-  $modules = GetAllElements($res, 'NODE');
-
-  $ret['modules']['linked'] = [];
-  $ret['modules']['name'] = [];
-  $ret['modules']['id'] = [];
-  foreach ($modules as $key => $module) {
-    if (empty($module)) continue;
-    $name = GetElement($module, 'Callsign');
-    $linked = GetElement($module, 'LinkedModule');
-    $lnkname = $linked; // . '</br>Nombre';
-
-    if ( ! isset($ret['modules']['linked'][$linked]) ) {
-      $ret['modules']['linked'][$linked] = [];
-      $ret['modules']['name'][$linked] = [];
-      array_push($ret['modules']['name'][$linked],$lnkname);
-      array_push($ret['modules']['id'],$linked);
-    }
-
-    array_push($ret['modules']['linked'][$linked],$name);
-  }
-*/
   return json_encode($ret);
 }
 
@@ -219,60 +153,21 @@ function get_repeaters_nodes()
 {
   $json = json_decode(file_get_contents(get_opt('JSONFile')));
   $ret = $json->nodes;
-/*
-  $ret = [];
-  $fields = ['Callsign', 'IP', 'LinkedModule', 'Protocol', 'ConnectTime', 'LastHeardTime'];
-  $res = GetElement($xml, get_opt('ReflectorName') . '  linked nodes');
-  $nodes = GetAllElements($res, 'NODE');
 
-  foreach ($nodes as $key => $node) {
-    if (empty($node)) continue;
-    $ret['nodes'][$key] = [];
-    foreach ($fields as $field) {
-      $val = GetElement($node, $field);
-      $fieldt = str_replace(' ', '_', $field);
-      if ($field == 'IP') {
-        $aux = explode('.', $val);
-        for ($i = 0; $i < get_opt('IPmask'); $i++) {
-          $aux[$i] = '*';
-        }
-        $val = implode('.', $aux);
-      }
-      $ret['nodes'][$key][$fieldt] = $val;
-    }
-  }
-*/
   return json_encode($ret);
 }
 
 function get_peers()
 {
-  $json = json_decode(file_get_contents(get_opt('JSONFile')));
-  $ret = $json->peers;
-  // TODO: Mask IP
-  /*
-  $ret = [];
-  $fields = ['Callsign', 'IP', 'LinkedModule', 'Protocol', 'ConnectTime', 'LastHeardTime'];
-  $res = GetElement($xml, get_opt('ReflectorName') . '  linked peers');
-  $peers = GetAllElements($res, 'PEER');
-
-  foreach ($peers as $key => $peer) {
-    if (empty($peer)) continue;
-    $ret['peers'][$key] = [];
-    foreach ($fields as $field) {
-      $val = GetElement($peer, $field);
-      $fieldt = str_replace(' ', '_', $field);
-      if ($field == 'IP') {
-        $aux = explode('.', $val);
-        for ($i = 0; $i < get_opt('IPmask'); $i++) {
-          $aux[$i] = '*';
-        }
-        $val = implode('.', $aux);
-      }
-      $ret['peers'][$key][$fieldt] = $val;
+  $json = json_decode(file_get_contents(get_opt('JSONFile')))->peers;
+  for ($i = 0; $i < count($json); $i++) {
+    $aux = explode('.', $json[$i]->ip);
+    for ($j = 0; $j < get_opt('IPmask'); $j++) {
+      $aux[$j] = '*';
     }
+    $json[$i]->ip = implode('.', $aux);
   }
-*/
+  $ret = $json;
   return json_encode($ret);
 }
 
